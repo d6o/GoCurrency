@@ -11,8 +11,8 @@ The GoCurrency's goal is to be a perfect tool providing a stupidly easy-to-use a
 - [Demo](#demo)
 - [Project Status](#project-status)
 - [Features](#features)
-- [Available Currencies](#available-currencies)
 - [Installation](#installation)
+- [Available Currencies](#available-currencies)
 - [Usage](#usage)
   - [Get all available currencies](#get-all-available-currencies)
   - [Convert 100 USD to all currencies](#convert-100-USD-to-all-currencies)
@@ -40,6 +40,14 @@ GoCurrency is on beta. Pull Requests [are welcome](https://github.com/DiSiqueira
 - STUPIDLY [EASY TO USE](https://github.com/DiSiqueira/GoCurrency#usage)
 - Very fast start up and response time
 - Uses native libs
+
+## Installation
+
+### Option 1: Go Get
+
+```bash
+$ go get github.com/disiqueira/gocurrency
+```
 
 ## Available Currencies
 
@@ -92,14 +100,6 @@ GoCurrency is on beta. Pull Requests [are welcome](https://github.com/DiSiqueira
 - TRY Turkey, new lira
 - USD US, dollar
 - ZAR South Africa, rand
-
-## Installation
-
-### Option 1: Go Get
-
-```bash
-$ go get github.com/disiqueira/gocurrency
-```
 
 ## Usage
 
