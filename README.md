@@ -126,7 +126,7 @@ func main() {
 	dollar := gocurrency.NewCurrency("USD")
 
 	for _, currency := range curList {
-		conv, err := gocurrency.ConvertCurrency(dollar, currency, 0)
+		conv, err := gocurrency.ConvertCurrency(dollar, currency, 100)
 		if err != nil {
 		       panic(err)
 		}
