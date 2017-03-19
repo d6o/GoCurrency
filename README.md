@@ -134,6 +134,7 @@ func main() {
 		fmt.Println("100 USD > ", currency.ID, strconv.FormatFloat(conv, 'f', 6, 64))
 	}
 }
+```
 
 ## Contributing
 
