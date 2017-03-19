@@ -6,28 +6,28 @@ import (
 	"time"
 )
 
-type Request interface {
+type request interface {
 	Get(URL string) ([]byte, error)
 }
 
-func NewRequest() Request {
-	return NewHttpRequest()
+func newRequest() request {
+	return newHTTPRequest()
 }
 
-type HttpRequest struct {
+type httpRequest struct {
 	netClient *http.Client
 }
 
-func NewHttpRequest() *HttpRequest {
+func newHTTPRequest() *httpRequest {
 	client := &http.Client{
 		Timeout: time.Second * 10,
 	}
-	return &HttpRequest{
+	return &httpRequest{
 		netClient: client,
 	}
 }
 
-func (h *HttpRequest) Get(URL string) ([]byte, error) {
+func (h *httpRequest) Get(URL string) ([]byte, error) {
 	response, err := h.netClient.Get(URL)
 	if err != nil {
 		return nil, err

@@ -112,7 +112,7 @@ import (
 )
 
 func main() {
-	curList, err := gocurrency.AvailableCurrencies()
+	curList, _ := gocurrency.AvailableCurrencies()
 
 	for _, currency := range curList {
 		fmt.Println(currency.Description)

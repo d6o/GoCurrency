@@ -6,21 +6,24 @@ import (
 	"fmt"
 )
 
-const AvailableCurrenciesURL string = "http://currencyconverter.kund.nu/api/availablecurrencies/"
+const availableCurrenciesURL string = "http://currencyconverter.kund.nu/api/availablecurrencies/"
 
-const ConvertCurrencyURL string = "http://currencyconverter.kund.nu/api/?from=%s&from_amount=%f&to=%s"
+const convertCurrencyURL string = "http://currencyconverter.kund.nu/api/?from=%s&from_amount=%f&to=%s"
 
+// Currency contains ID and Description of an Currency.
 type Currency struct {
 	ID          string `json:"id"`
 	Description string `json:"description"`
 }
 
+// NewCurrency Create an instance of Currency.
 func NewCurrency(currency string) Currency {
 	return Currency{ID: currency}
 }
 
+// AvailableCurrencies returns an array with all currencies that can be used.
 func AvailableCurrencies() ([]Currency, error) {
-	resp, err := NewRequest().Get(AvailableCurrenciesURL)
+	resp, err := newRequest().Get(availableCurrenciesURL)
 	if err != nil {
 		return nil, err
 	}
@@ -34,7 +37,7 @@ func AvailableCurrencies() ([]Currency, error) {
 	return curList, nil
 }
 
-type ConvertCurrencyResponse struct {
+type convertCurrencyResponse struct {
 	From       string  `json:"from"`
 	To         string  `json:"to"`
 	FromAmount float64 `json:"from_amount"`
@@ -42,14 +45,15 @@ type ConvertCurrencyResponse struct {
 	Error      string  `json:"error"`
 }
 
+// ConvertCurrency Converts an amount from one currency to another currency.
 func ConvertCurrency(from, to Currency, amount float64) (float64, error) {
-	endpoint := fmt.Sprintf(ConvertCurrencyURL, from.ID, amount, to.ID)
-	resp, err := NewRequest().Get(endpoint)
+	endpoint := fmt.Sprintf(convertCurrencyURL, from.ID, amount, to.ID)
+	resp, err := newRequest().Get(endpoint)
 	if err != nil {
 		return 0, err
 	}
 
-	ccResp := ConvertCurrencyResponse{}
+	ccResp := convertCurrencyResponse{}
 	err = json.Unmarshal(resp, &ccResp)
 	if err != nil {
 		return 0, err
