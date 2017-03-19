@@ -4,11 +4,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+
+	"github.com/shopspring/decimal"
 )
 
 const availableCurrenciesURL string = "http://currencyconverter.kund.nu/api/availablecurrencies/"
 
-const convertCurrencyURL string = "http://currencyconverter.kund.nu/api/?from=%s&from_amount=%f&to=%s"
+const convertCurrencyURL string = "http://currencyconverter.kund.nu/api/?from=%s&from_amount=%s&to=%s"
 
 // Currency contains ID and Description of an Currency.
 type Currency struct {
@@ -46,22 +48,22 @@ type convertCurrencyResponse struct {
 }
 
 // ConvertCurrency Converts an amount from one currency to another currency.
-func ConvertCurrency(from, to Currency, amount float64) (float64, error) {
+func ConvertCurrency(from, to Currency, amount decimal.Decimal) (decimal.Decimal, error) {
 	endpoint := fmt.Sprintf(convertCurrencyURL, from.ID, amount, to.ID)
 	resp, err := newRequest().Get(endpoint)
 	if err != nil {
-		return 0, err
+		return decimal.NewFromFloat(0), err
 	}
 
 	ccResp := convertCurrencyResponse{}
 	err = json.Unmarshal(resp, &ccResp)
 	if err != nil {
-		return 0, err
+		return decimal.NewFromFloat(0), err
 	}
 
 	if ccResp.Error != "" {
-		return 0, errors.New(ccResp.Error)
+		return decimal.NewFromFloat(0), errors.New(ccResp.Error)
 	}
 
-	return ccResp.ToAmount, nil
+	return decimal.NewFromFloat(ccResp.ToAmount), nil
 }
