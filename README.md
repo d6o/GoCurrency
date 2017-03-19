@@ -123,7 +123,58 @@ func main() {
 }
 ```
 
-![](http://image.prntscr.com/image/996b6db6daa5404daa52b551849da8f3.png)
+Output:
+```
+SEK Sweden, kronor
+ATS Austria, shilling
+AUD Australian, dollar
+BEF Belgien, franc
+BRL Brazilien, real
+CAD Canada, dollar
+CHF Switzerland, francs
+CNY China, yuan renminbi
+CYP Cyprus, pound
+CZK Czech Republic, koruna
+DEM Germany, mark
+DKK Denmark, krone
+EEK Estonian, kroon
+ESP Spain, pesetas
+EUR Euroland, euro
+FIM Finland, marka
+FRF France, franc
+GBP Great Britain, pound
+GRD Greece, drachmer
+HKD Hong Kong, dollar
+HUF Hungary, forint
+IDR Indonesia, rupiah
+IEP Ireland, pund
+INR India, rupee
+ISK Iceland, kronor
+ITL Italy, lire
+JPY Japan, yen
+KRW South Korea, won
+KWD Kuwait, dinar
+LTL Lithuania,  litas
+LVL Latvia, lat
+MAD Morocko, dirham
+MXN Mexico, nuevo peso
+MYR Malaysia, ringgit
+NLG Dutchland, guilder
+NOK Norway, krone
+NZD New Zealand, dollar
+PLN Poland, zloty
+PTE Portugal, escudo
+RUB Russia, rouble
+SAR Saudi Arabia, riyal
+SGD Singapore, dollar
+SIT Slovenia, tolar
+SKK Slovakia, koruna
+THB Thailand, baht
+TRL Turkey, lira
+TRY Turkey, new lira
+USD US, dollar
+ZAR South Africa, rand
+```
 
 ### Convert 100 USD to all currencies
 
@@ -151,6 +202,7 @@ func main() {
 }
 ```
 
+Output:
 ```
 USD 100.00 --> SEK 881.12
 USD 100.00 --> ATS 1334.36
@@ -202,8 +254,6 @@ USD 100.00 --> TRY 360.64
 USD 100.00 --> USD 100.00
 USD 100.00 --> ZAR 1277.17
 ```
-
-![](http://image.prntscr.com/image/4aac591db36443698437e0d60a63fb88.png)
 
 ## Contributing
 
