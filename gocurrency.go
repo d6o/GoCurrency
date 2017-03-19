@@ -47,7 +47,7 @@ type convertCurrencyResponse struct {
 	Error      string  `json:"error"`
 }
 
-// ConvertCurrency Converts an amount from one currency to another currency.
+// ConvertCurrency Converts an amount (Decimal) from one currency to another currency.
 func ConvertCurrency(from, to Currency, amount decimal.Decimal) (decimal.Decimal, error) {
 	endpoint := fmt.Sprintf(convertCurrencyURL, from.ID, amount, to.ID)
 	resp, err := newRequest().Get(endpoint)
