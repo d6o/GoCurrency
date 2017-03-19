@@ -6,6 +6,23 @@ GoCurrency is a Go program made on the top of Kund Nu Currency Converter API.
 
 The GoCurrency's goal is to be a perfect tool providing a stupidly easy-to-use and fast program to convert values between currencies.
 
+[![asciicast](https://asciinema.org/a/84fnrjijbhiygau46r2556wa6.png)](https://asciinema.org/a/84fnrjijbhiygau46r2556wa6)
+
+**Table of Contents**
+
+- [Project Status](#project-status)
+- [Features](#features)
+- [Available Currencies](#available-currencies)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Get all available currencies](#get-all-available-currencies)
+  - [Convert 100 USD to all currencies](#convert-100-USD-to-all-currencies)
+- [Contributing](#contributing)
+  - [Bug Reports & Feature Requests](#bug-reports--feature-requests)
+  - [Developing](#developing)
+- [Social Coding](#social-coding)
+- [License](#license)
+
 ## Project Status
 
 GoCurrency is on beta. Pull Requests [are welcome](https://github.com/DiSiqueira/GoCurrency#social-coding)
@@ -96,15 +113,14 @@ import (
 
 func main() {
 	curList, err := gocurrency.AvailableCurrencies()
-	if err != nil {
-		panic(err)
-	}
 
 	for _, currency := range curList {
 		fmt.Println(currency.Description)
 	}
 }
 ```
+
+![](http://image.prntscr.com/image/996b6db6daa5404daa52b551849da8f3.png)
 
 ### Convert 100 USD to all currencies
 
@@ -113,28 +129,26 @@ package main
 
 import (
 	"fmt"
+        "strconv"
 
 	"github.com/disiqueira/gocurrency"
 )
 
 func main() {
-	curList, err := gocurrency.AvailableCurrencies()
-	if err != nil {
-		panic(err)
-	}
+	curList, _ := gocurrency.AvailableCurrencies()
 
 	dollar := gocurrency.NewCurrency("USD")
+	amount := 100.00
 
 	for _, currency := range curList {
-		conv, err := gocurrency.ConvertCurrency(dollar, currency, 100)
-		if err != nil {
-		       panic(err)
-		}
+		conv, _ := gocurrency.ConvertCurrency(dollar, currency, amount)
 
-		fmt.Println("100 USD > ", currency.ID, strconv.FormatFloat(conv, 'f', 6, 64))
+		fmt.Printf("%-3s %-6.2f --> %-3s %-11.2f\n", dollar.ID, amount, currency.ID, conv)
 	}
 }
 ```
+
+![](http://image.prntscr.com/image/4aac591db36443698437e0d60a63fb88.png)
 
 ## Contributing
 
