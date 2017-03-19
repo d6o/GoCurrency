@@ -6,7 +6,7 @@ GoCurrency is a Go program made on the top of Kund Nu Currency Converter API.
 
 The GoCurrency's goal is to be a perfect tool providing a stupidly easy-to-use and fast program to convert values between currencies.
 
-[![asciicast](https://asciinema.org/a/107878.png)](https://asciinema.org/a/107878?t=10)
+[![asciicast](http://image.prntscr.com/image/2f33d4153f794d15bd95d2d533adab98.png)](https://asciinema.org/a/107878?t=10)
 
 **Table of Contents**
 
